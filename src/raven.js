@@ -1553,7 +1553,7 @@ Raven.prototype = {
         }
 
         var exception = data.exception && data.exception.values && data.exception.values[0];
-        exception = exception || data.exception[0].value;
+        exception = exception || data.exception[data.exception.length - 1].value;
         this.captureBreadcrumb({
             category: 'sentry',
             message: exception
