@@ -1,10 +1,10 @@
-/*! Raven.js 3.9.1a (7cab497) | github.com/getsentry/raven-js */
+/*! Raven.js 3.9.1a (2c13cd6) | github.com/getsentry/raven-js */
 
 /*
  * Includes TraceKit
  * https://github.com/getsentry/TraceKit
  *
- * Copyright 2016 Matt Robenolt and other contributors
+ * Copyright 2017 Matt Robenolt and other contributors
  * Released under the BSD license
  * https://github.com/getsentry/raven-js/blob/master/LICENSE
  *
@@ -528,7 +528,7 @@ Raven.prototype = {
         if (!!this._globalOptions.ignoreUrls.test && this._globalOptions.ignoreUrls.test(sourceException.filename)) return;
         if (!!this._globalOptions.whitelistUrls.test && !this._globalOptions.whitelistUrls.test(sourceException.filename)) return;
 
-        return exceptions.reverse();
+        return exceptions;
     },
 
     /**
