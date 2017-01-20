@@ -1,4 +1,4 @@
-/*! Raven.js 3.9.1a (2c13cd6) | github.com/getsentry/raven-js */
+/*! Raven.js 3.9.1a (31e92cb) | github.com/getsentry/raven-js */
 
 /*
  * Includes TraceKit
@@ -1647,7 +1647,7 @@ Raven.prototype = {
         }
 
         var exception = data.exception && data.exception.values && data.exception.values[0];
-        exception = exception || data.exception[0].value;
+        exception = exception || data.exception[data.exception.length - 1].value;
         this.captureBreadcrumb({
             category: 'sentry',
             message: exception
