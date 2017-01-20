@@ -434,7 +434,7 @@ Raven.prototype = {
         if (!!this._globalOptions.ignoreUrls.test && this._globalOptions.ignoreUrls.test(sourceException.filename)) return;
         if (!!this._globalOptions.whitelistUrls.test && !this._globalOptions.whitelistUrls.test(sourceException.filename)) return;
 
-        return exceptions.reverse();
+        return exceptions;
     },
 
     /**
