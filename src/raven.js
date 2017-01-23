@@ -434,6 +434,11 @@ Raven.prototype = {
         if (!!this._globalOptions.ignoreUrls.test && this._globalOptions.ignoreUrls.test(sourceException.filename)) return;
         if (!!this._globalOptions.whitelistUrls.test && !this._globalOptions.whitelistUrls.test(sourceException.filename)) return;
 
+        // for sentry, to show first exception on top
+        exceptions.forEach(function(ex) {
+            ex.stacktrace.frames.reverse();
+        });
+        
         return exceptions;
     },
 
@@ -1553,7 +1558,7 @@ Raven.prototype = {
         }
 
         var exception = data.exception && data.exception.values && data.exception.values[0];
-        exception = exception || data.exception[data.exception.length - 1].value;
+        exception = exception || data.exception[0].value;
         this.captureBreadcrumb({
             category: 'sentry',
             message: exception
