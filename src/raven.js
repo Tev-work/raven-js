@@ -438,8 +438,8 @@ Raven.prototype = {
         exceptions.forEach(function(ex) {
             ex.stacktrace.frames.reverse();
         });
-        
-        return exceptions;
+
+        return exceptions.reverse();
     },
 
     /**
@@ -450,11 +450,10 @@ Raven.prototype = {
 
             // extract exceptions
             var exceptions = this.parseAdvancedExceptions(exception);
-            var last = exceptions.length - 1;
             var data = objectMerge({
                 exception: exceptions,
-                culprit: exceptions[last].filename,
-                message: exceptions[last].type + ': ' + exceptions[last].value
+                culprit: exceptions[0].filename,
+                message: exceptions[0].type + ': ' + exceptions[0].value
             }, options);
 
 
