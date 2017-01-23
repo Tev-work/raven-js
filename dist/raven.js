@@ -1,4 +1,4 @@
-/*! Raven.js 3.9.1a (cd2f850) | github.com/getsentry/raven-js */
+/*! Raven.js 3.9.1a (9a663e8) | github.com/getsentry/raven-js */
 
 /*
  * Includes TraceKit
@@ -532,8 +532,8 @@ Raven.prototype = {
         exceptions.forEach(function(ex) {
             ex.stacktrace.frames.reverse();
         });
-        
-        return exceptions;
+
+        return exceptions.reverse();
     },
 
     /**
@@ -544,11 +544,10 @@ Raven.prototype = {
 
             // extract exceptions
             var exceptions = this.parseAdvancedExceptions(exception);
-            var last = exceptions.length - 1;
             var data = objectMerge({
                 exception: exceptions,
-                culprit: exceptions[last].filename,
-                message: exceptions[last].type + ': ' + exceptions[last].value
+                culprit: exceptions[0].filename,
+                message: exceptions[0].type + ': ' + exceptions[0].value
             }, options);
 
 
